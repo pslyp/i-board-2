@@ -1,0 +1,21 @@
+<schedule>
+  <dates>
+    <date start="2023-12-05" stop="2023-12-07">
+      <times>
+        <time start="08:00" stop="10:00">
+          <motion no="1" file="" trasition="" duration="" />
+          <motion no="2" file="" trasition="" duration="" />
+        </time>
+      <times>
+    </date>
+  <dates>
+<schedule>
+
+<schedule>
+  <date start="2023-12-05" stop="2023-12-07">
+    <time start="08:00" stop="10:00">
+      <motion no="1" file="" trasition="" duration="" />
+      <motion no="2" file="" trasition="" duration="" />
+    </time>
+  </date>
+<schedule>
