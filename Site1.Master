@@ -21,6 +21,7 @@
                 <ul>
                     <li><a href="Home.aspx">Home</a></li>
                     <li><a href="Setting.aspx">Setting</a></li>
+                    <li><a id="show" href="Show.aspx">Show</a></li>
                 </ul>
             </div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

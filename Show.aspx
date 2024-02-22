@@ -41,6 +41,34 @@
             height: 100%;
         }
 
+        .media-slide {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /*video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }*/
+
+        /*video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;*/
+        /*z-index: -100;*/
+        /*background: url(polina.jpg) no-repeat;*/
+        /*background-size: cover;*/
+        /*}*/
+
         .hide {
             display: none;
         }
@@ -175,15 +203,16 @@
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
                     <div id="slideShow" runat="server" class="full-page">
+                        <button id="fs" onclick="openFullscreen();">Full Screen</button>                    
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-        <%--<div>
-            <div id="slideShow" runat="server" class="full-page">
-                <h1 id="title" class="title">No Presentation</h1>
-            </div>
-        </div>--%>
     </form>
+    <script>
+        setTimeout(function () {
+            document.getElementById('fs').click();
+        }, 3000);
+    </script>
 </body>
 </html>

@@ -4,6 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
-        <marquee>AAAAA</marquee>
+        <script>
+            document.getElementById('show').click();
+        </script>
     </div>
 </asp:Content>

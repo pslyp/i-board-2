@@ -4,14 +4,15 @@ Public Class Show
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'IMAGE
-        slideShow.Controls.Add(New LiteralControl("<img src=""\resources\image\cat1.jpg"" class=""img-slide"" />"))
-        slideShow.Controls.Add(New LiteralControl("<img src=""\resources\image\cat2.jpg"" class=""img-slide"" />"))
+        slideShow.Controls.Add(New LiteralControl("<img src=""\resources\image\cat1.jpg"" class=""media-slide animate-fading"" />"))
+        slideShow.Controls.Add(New LiteralControl("<img src=""\resources\image\cat2.jpg"" class=""media-slide"" />"))
 
-        registerScriptSlideShow("img-slide", 2000)
+        registerScriptSlideShow("media-slide", 2000)
+        registerScriptFullScreen()
 
         'AUDIO
         'Dim _element As New StringBuilder
-        '_element.AppendLine("<audio id=""av-slide"" controls autoplay>")
+        '_element.AppendLine("<audio id=""av-slide"" autoplay>")
         '_element.AppendLine("   <source src=""\resources\audio\ลัก - The Mousses.mp3"" type=""audio/mpeg"">")
         '_element.AppendLine("</audio>")
 
@@ -19,16 +20,14 @@ Public Class Show
 
         'VIDEO
         'Dim _element As New StringBuilder
-        '_element.AppendLine("<video id=""av-slide"" autoplay muted>")
-        '_element.AppendLine("   <source src=""\resources\video\mm.mp4"" type=""video/mp4"">")
+        '_element.AppendLine("<video id=""av-slide"" controls autoplay>")
+        '_element.AppendLine("   <source src=""resources\video\mm.mp4"" type=""video/mp4"">")
         '_element.AppendLine("</video>")
-        '_element.AppendLine("<audio id=""av-slide"" autoplay hidden>")
-        '_element.AppendLine("   <source src=""\resources\video\mm.mp4"" type=""audio/mpeg"">")
-        '_element.AppendLine("</audio>")
 
         'slideShow.Controls.Add(New LiteralControl(_element.ToString))
         'setVolume(0.2)
         'registerScriptReloadPage(0, True)
+        'registerScriptFullScreen("av-slide")
 
         'Dim _timeOut As Integer = 0
         'Dim _dateNow As DateTime = DateTime.Now
@@ -64,7 +63,8 @@ Public Class Show
         _script.AppendLine($"   av.volume = {number};")
         _script.AppendLine($"   av.muted = {mute.ToString.ToLower};")
         _script.AppendLine("}")
-        _script.AppendLine("setTimeout(setVolume, 2000);")
+        _script.AppendLine("setVolume();")
+        '_script.AppendLine("setTimeout(setVolume, 2000);")
 
         ScriptManager.RegisterStartupScript(Me, Me.GetType, "Volume", _script.ToString, True)
     End Sub
@@ -107,10 +107,15 @@ Public Class Show
         ScriptManager.RegisterStartupScript(Me, Me.GetType, "SlideShow", _script.ToString, True)
     End Sub
 
-    Private Sub registerScriptFullScreen(elementId As String)
+    Private Sub registerScriptFullScreen(Optional elementId As String = "")
         Dim _script As New StringBuilder
-        '_script.AppendLine("var elem = document.documentElement;")
-        _script.AppendLine($"var elem = document.getElementById(""{elementId}"");")
+        If String.IsNullOrEmpty(elementId) Then
+            'Fullscreen Document
+            _script.AppendLine("var elem = document.documentElement;")
+        Else
+            'Fullscreen Video
+            _script.AppendLine($"var elem = document.getElementById(""{elementId}"");")
+        End If
         _script.AppendLine("function openFullscreen() {")
         _script.AppendLine("    if (elem.requestFullscreen) {")
         _script.AppendLine("        elem.requestFullscreen();")
@@ -129,9 +134,11 @@ Public Class Show
         _script.AppendLine("        document.msExitFullscreen();")
         _script.AppendLine("    }")
         _script.AppendLine("}")
+        '_script.AppendLine("openFullscreen();")
+        _script.AppendLine("setTimeout(openFullscreen, 5000);")
 
         ScriptManager.RegisterStartupScript(Me, Me.GetType, "FullScreen", _script.ToString, True)
-        ScriptManager.RegisterStartupScript(Me, Me.GetType, "OpenFullScreen", "openFullscreen();", True)
+        'ScriptManager.RegisterStartupScript(Me, Me.GetType, "OpenFullScreen", "openFullscreen();", True)
     End Sub
 
 End Class
