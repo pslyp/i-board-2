@@ -203,10 +203,10 @@
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
                     <div id="slideShow" runat="server" class="full-page">
-                        <button id="fs" onclick="openFullscreen();" hidden>Full Screen</button>
+                       <%-- <button id="fs" onclick="openFullscreen();" hidden>Full Screen</button>
                         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                         <asp:HyperLink ID="HyperLink1" runat="server">HyperLink</asp:HyperLink>
-                        <a id="cc" href="#"></a>
+                        <a id="cc" href="#"></a>--%>
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>

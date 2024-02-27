@@ -7,9 +7,6 @@ Public Class Show
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        readSchedule()
-
-
         'IMAGE
         'slideShow.Controls.Add(New LiteralControl("<img src=""\resources\image\minebea.png"" class=""media-slide"" />"))
         'slideShow.Controls.Add(New LiteralControl("<img src=""\resources\image\bearing.png"" class=""media-slide"" />"))
@@ -60,22 +57,57 @@ Public Class Show
         '    registerScriptReloadPage(_timeOut)
         'End If
 
-        'Dim xDocs = XDocument.Load(Server.MapPath("schedule.xml"))
+        'XXX
+        'Read config file
+        Dim actions As List(Of Action) = readSchedule()
+        If actions.Count > 1 Then
+            For Each action In actions
+                slideShow.Controls.Add(New LiteralControl("<img src=""\resources\image\" & action.file & """ class=""media-slide " & action.transition & """ />"))
+            Next
+            registerScriptSlideShow("media-slide", 2000)
+        Else
+            Dim _element As New StringBuilder
+            _element.AppendLine("<video id=""av-slide"" controls autoplay>")
+            _element.AppendLine("   <source src=""resources\video\" & actions(0).file & """ type=""video/mp4"">")
+            _element.AppendLine("</video>")
+
+            slideShow.Controls.Add(New LiteralControl(_element.ToString))
+            'setVolume(0.2)
+        End If
     End Sub
 
-    Private Sub readSchedule()
-        Dim file As String = Server.MapPath("Schedule.xml")
+    Private Function readSchedule() As List(Of Action)
+        Dim actionList As New List(Of Action)()
+
+        Dim fileName As String = Server.MapPath("Schedule.xml")
         Dim xmlDoc As New XmlDocument
-        xmlDoc.Load(file)
+        xmlDoc.Load(fileName)
 
-        Dim nodeList = xmlDoc.SelectNodes("/Schedule/Trigger")
+        Dim triggers As XmlNodeList = xmlDoc.SelectNodes("/Schedule/Trigger")
 
-        'slideShow.Controls.Add(New LiteralControl("<img src=""\resources\image\minebea.png"" class=""media-slide"" />"))
-        'slideShow.Controls.Add(New LiteralControl("<img src=""\resources\image\bearing.png"" class=""media-slide"" />"))
+        For Each trigger As XmlNode In triggers
+            Dim startDate = trigger.Attributes("startDate").Value
+            If startDate.Equals(DateTime.Now.ToString("yyyyMMdd", New Globalization.CultureInfo("us-EN"))) Then
+                'XXX
+                Dim actions = From ac As XmlNode In trigger.SelectNodes("Actions")
+                              Where ac.Attributes("id").Value = "act002"
 
+                For Each action As XmlNode In actions(0).ChildNodes
+                    Dim file = action.Attributes("file").Value
+                    Dim type = action.Attributes("type").Value
+                    Dim transition = action.Attributes("transition").Value
 
-        Dim kk = ""
-    End Sub
+                    actionList.Add(New Action With {
+                        .file = file,
+                        .type = type,
+                        .transition = transition
+                    })
+                Next
+            End If
+        Next
+
+        Return actionList
+    End Function
 
 #Region "--- Javascripts ---"
     Private Sub setVolume(number As Double, Optional mute As Boolean = False)
@@ -116,7 +148,7 @@ Public Class Show
         _script.AppendLine("startShow();")
         _script.AppendLine("function startShow() {")
         _script.AppendLine($"   var slides = document.getElementsByClassName(""{className}"");")
-        _script.AppendLine("    console.log(slides.length);")
+        '_script.AppendLine("    console.log(slides.length);")
         _script.AppendLine("    for (i = 0; i < slides.length; i++) {")
         _script.AppendLine("        slides[i].style.display = ""none"";")
         _script.AppendLine("    }")

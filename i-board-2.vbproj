@@ -105,6 +105,9 @@
     <Content Include="Setting.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="models\Action.vb" />
+    <Compile Include="models\Schedule.vb" />
+    <Compile Include="models\Trigger.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
