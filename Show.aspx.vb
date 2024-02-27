@@ -1,14 +1,21 @@
 ﻿
+Imports System.Web.Services.Description
+Imports System.Xml
+Imports System.Xml.XPath
+
 Public Class Show
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        'IMAGE
-        slideShow.Controls.Add(New LiteralControl("<img src=""\resources\image\cat1.jpg"" class=""media-slide animate-fading"" />"))
-        slideShow.Controls.Add(New LiteralControl("<img src=""\resources\image\cat2.jpg"" class=""media-slide"" />"))
+        readSchedule()
 
-        registerScriptSlideShow("media-slide", 2000)
-        registerScriptFullScreen()
+
+        'IMAGE
+        'slideShow.Controls.Add(New LiteralControl("<img src=""\resources\image\minebea.png"" class=""media-slide"" />"))
+        'slideShow.Controls.Add(New LiteralControl("<img src=""\resources\image\bearing.png"" class=""media-slide"" />"))
+
+        'registerScriptSlideShow("media-slide", 2000)
+        'registerScriptFullScreen()
 
         'AUDIO
         'Dim _element As New StringBuilder
@@ -56,6 +63,21 @@ Public Class Show
         'Dim xDocs = XDocument.Load(Server.MapPath("schedule.xml"))
     End Sub
 
+    Private Sub readSchedule()
+        Dim file As String = Server.MapPath("Schedule.xml")
+        Dim xmlDoc As New XmlDocument
+        xmlDoc.Load(file)
+
+        Dim nodeList = xmlDoc.SelectNodes("/Schedule/Trigger")
+
+        'slideShow.Controls.Add(New LiteralControl("<img src=""\resources\image\minebea.png"" class=""media-slide"" />"))
+        'slideShow.Controls.Add(New LiteralControl("<img src=""\resources\image\bearing.png"" class=""media-slide"" />"))
+
+
+        Dim kk = ""
+    End Sub
+
+#Region "--- Javascripts ---"
     Private Sub setVolume(number As Double, Optional mute As Boolean = False)
         Dim _script As New StringBuilder
         _script.AppendLine("function setVolume() {")
@@ -116,8 +138,12 @@ Public Class Show
             'Fullscreen Video
             _script.AppendLine($"var elem = document.getElementById(""{elementId}"");")
         End If
+        _script.AppendLine("console.log(document.fullscreenEnabled);")
+        _script.AppendLine("console.log(document.fullscreenElement);")
+
         _script.AppendLine("function openFullscreen() {")
         _script.AppendLine("    if (elem.requestFullscreen) {")
+        _script.AppendLine("        console.log('fs1');")
         _script.AppendLine("        elem.requestFullscreen();")
         _script.AppendLine("    } else if (elem.webkitRequestFullscreen) {")    'Safari
         _script.AppendLine("        elem.webkitRequestFullscreen();")
@@ -134,11 +160,12 @@ Public Class Show
         _script.AppendLine("        document.msExitFullscreen();")
         _script.AppendLine("    }")
         _script.AppendLine("}")
-        '_script.AppendLine("openFullscreen();")
-        _script.AppendLine("setTimeout(openFullscreen, 5000);")
+        _script.AppendLine("openFullscreen();")
+        '_script.AppendLine("setTimeout(openFullscreen, 3000);")
 
         ScriptManager.RegisterStartupScript(Me, Me.GetType, "FullScreen", _script.ToString, True)
         'ScriptManager.RegisterStartupScript(Me, Me.GetType, "OpenFullScreen", "openFullscreen();", True)
     End Sub
+#End Region
 
 End Class

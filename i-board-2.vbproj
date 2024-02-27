@@ -92,9 +92,11 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="resources\audio\ลัก - The Mousses.mp3" />
+    <Content Include="resources\image\bearing.png" />
     <Content Include="resources\image\cat1.jpg" />
     <Content Include="resources\image\cat2.jpg" />
-    <Content Include="resources\audio\ลัก - The Mousses.mp3" />
+    <Content Include="resources\image\minebea.png" />
     <Content Include="resources\video\mm.mp4" />
     <Content Include="Web.config" />
     <Content Include="Show.aspx" />
@@ -150,6 +152,7 @@
       <DependentUpon>Setting.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Utils.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -208,7 +211,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49944</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44380/</IISUrl>
+          <IISUrl>http://localhost:44380/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

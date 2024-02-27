@@ -23,13 +23,13 @@ Partial Public Class Setting
     Protected WithEvents ddlMediaType As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ddlImageFile control.
+    '''ddlFile control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlImageFile As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents ddlFile As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''ddlAnimateType control.
@@ -50,11 +50,47 @@ Partial Public Class Setting
     Protected WithEvents ddlDuration As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''btnSave control.
+    '''DropDownList1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnSave As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''DropDownList2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DropDownList2 As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''DropDownList3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DropDownList3 As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''DropDownList4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DropDownList4 As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''btnSubmit control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSubmit As Global.System.Web.UI.WebControls.Button
 End Class

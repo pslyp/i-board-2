@@ -1,5 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<Schedules>
-  
-</Schedules>
+<Schedule>
+	<Trigger id="001" startDate="" stopDate="">
+		<Actions>
+			<Action no="1" file="minebea.png" transition="" duration="1" />
+			<Action no="2" file="bearing.png" transition="" duration="1" />
+		</Actions>
+	</Trigger>
+	<Trigger id="002" startDate="20240227" stopDate="20240229">
+		<Actions>
+			<Action no="1" file="minebea.png" transition="" duration="1" />
+			<Action no="2" file="bearing.png" transition="" duration="1" />
+		</Actions>
+	</Trigger>
+</Schedule>

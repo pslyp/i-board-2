@@ -203,7 +203,10 @@
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
                     <div id="slideShow" runat="server" class="full-page">
-                        <button id="fs" onclick="openFullscreen();">Full Screen</button>                    
+                        <button id="fs" onclick="openFullscreen();" hidden>Full Screen</button>
+                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                        <asp:HyperLink ID="HyperLink1" runat="server">HyperLink</asp:HyperLink>
+                        <a id="cc" href="#"></a>
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
@@ -211,8 +214,18 @@
     </form>
     <script>
         setTimeout(function () {
-            document.getElementById('fs').click();
+            // document.getElementById('cc').click();
+            // document.documentElement.requestFullscreen();
         }, 3000);
+
+        //window.onload = function () {
+        //    if (document.fullscreenElement == null) {
+        //        document.getElementById('HyperLink1').click();
+        //        document.documentElement.requestFullscreen();
+        //    } else {
+
+        //    }
+        //}
     </script>
 </body>
 </html>
