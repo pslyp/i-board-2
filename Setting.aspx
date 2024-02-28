@@ -5,6 +5,93 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
         <table>
+            <tr>
+                <td>
+                    <span>Date</span>&nbsp
+                    <asp:TextBox ID="txtFromDate" runat="server" TextMode="Date"></asp:TextBox>
+                    &nbsp-&nbsp
+                    <asp:TextBox ID="txtToDate" runat="server" TextMode="Date"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Time</span>&nbsp
+                    <asp:TextBox ID="txtTime" runat="server" TextMode="Time"></asp:TextBox>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <table>
+            <thead>
+                <tr>
+                    <td>File</td>
+                    <td>Transition</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <asp:DropDownList ID="ddlFile1" runat="server" Width="104px">
+                            <asp:ListItem Selected="True" Value="0">-</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlTransition1" runat="server">
+                            <asp:ListItem Selected="True" Value="0">None</asp:ListItem>
+                            <asp:ListItem Value="1">Fade</asp:ListItem>
+                            <asp:ListItem Value="2">Slide from right</asp:ListItem>
+                            <asp:ListItem Value="3">Slide from left</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:DropDownList ID="ddlFile2" runat="server" Width="104px">
+                            <asp:ListItem Selected="True" Value="0">-</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlTransition2" runat="server">
+                            <asp:ListItem Selected="True" Value="0">None</asp:ListItem>
+                            <asp:ListItem Value="1">Fade</asp:ListItem>
+                            <asp:ListItem Value="2">Slide from right</asp:ListItem>
+                            <asp:ListItem Value="3">Slide from left</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:DropDownList ID="ddlFile3" runat="server" Width="104px">
+                            <asp:ListItem Selected="True" Value="0">-</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlTransition3" runat="server">
+                            <asp:ListItem Selected="True" Value="0">None</asp:ListItem>
+                            <asp:ListItem Value="1">Fade</asp:ListItem>
+                            <asp:ListItem Value="2">Slide from right</asp:ListItem>
+                            <asp:ListItem Value="3">Slide from left</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:DropDownList ID="ddlFile4" runat="server" Width="104px">
+                            <asp:ListItem Selected="True" Value="0">-</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlTransition4" runat="server">
+                            <asp:ListItem Selected="True" Value="0">None</asp:ListItem>
+                            <asp:ListItem Value="1">Fade</asp:ListItem>
+                            <asp:ListItem Value="2">Slide from right</asp:ListItem>
+                            <asp:ListItem Value="3">Slide from left</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <%-- <table>
             <thead>
                 <tr>
                     <td>Type</td>
@@ -81,7 +168,7 @@
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table>--%>
         <br />
         <asp:Button ID="btnSubmit" runat="server" Text="Submit" />
     </div>
